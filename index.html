@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Павел Аксенов — пианист и композитор. Неоклассическая музыка, живое исполнение, авторский альбом проекта числа.">
+  <title>числа — Павел Аксенов</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-soft: #141418;
+      --text: #e8e6e1;
+      --text-muted: #8a8883;
+      --accent: #c4a77d;
+      --border: rgba(255,255,255,0.08);
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Inter", system-ui, sans-serif;
+      --space: clamp(1.5rem, 4vw, 3rem);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.7; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* Layout */
+    .container {
+      width: min(92%, 1100px);
+      margin: 0 auto;
+      padding: 0 var(--space);
+    }
+    section { padding: calc(var(--space) * 1.5) 0; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1.2rem 0;
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 1.8rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 6rem;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      max-width: 600px;
+      color: var(--text-muted);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      margin-bottom: 2rem;
+    }
+    .stream-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: all 0.25s;
+    }
+    .btn:hover { background: var(--bg-soft); border-color: var(--accent); opacity: 1; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: calc(var(--space) * 1.5);
+      align-items: center;
+    }
+    .about-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .about-text p { margin-bottom: 1rem; color: var(--text-muted); }
+    .portrait {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 4px;
+      filter: grayscale(30%) contrast(1.05);
+    }
+
+    /* Music */
+    .music h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .album-block {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .album-cover {
+      width: 240px;
+      aspect-ratio: 1/1;
+      margin: 0 auto 1.5rem;
+      background: #1a1a1f;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .album-title { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .album-year { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .embed-placeholder {
+      width: 100%;
+      height: 80px;
+      background: #0f0f12;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Gallery */
+    .gallery h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      aspect-ratio: 1/1;
+      background: var(--bg-soft);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s, filter 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.03); filter: grayscale(0%); }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .socials { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.2rem; }
+    .socials a { font-weight: 400; }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">числа</div>
+      <nav class="nav-links">
+        <a href="#about">Об исполнителе</a>
+        <a href="#music">Музыка</a>
+        <a href="#gallery">Фото</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 class="fade-in">Павел Аксенов</h1>
+    <p class="fade-in">Пианист. Композитор. Живой звук без наслоений.<br>Дебютный неоклассический альбом проекта «числа».</p>
+    <div class="stream-links fade-in">
+      <a href="#" class="btn">Слушать на Яндекс.Музыке</a>
+      <a href="#" class="btn">Слушать на Spotify</a>
+      <a href="#" class="btn">Слушать на Apple Music</a>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <h2>Об исполнителе</h2>
+        <p>Начав путь как импровизатор и исполнитель каверов, собравший аудиторию живыми эфирами и чтением с листа, Павел переходит к авторской музыке.</p>
+        <p>Его стиль — честный минимализм. Без идеальной цифровой вылизки, но с предельной искренностью. В треках переплетаются ностальгическая мелодика, современные гармонии и техника, отточенная сотнями часов прямых эфиров.</p>
+        <p>«Снизь планку — всяк сюда входящий». Эта фраза стала манифестом задолго до релиза. Музыка, которая не требует внимания, а ждёт присутствия.</p>
+      </div>
+      <!-- Замените src на путь к вашему фото из профиля -->
+      <img src=""C:\Users\xpaxa\Downloads\photo_5451712348457471066_w.jpg"" alt="Павел Аксенов за фортепиано" class="portrait fade-in">
+    </div>
+  </section>
+
+  <section id="music" class="container">
+    <h2 class="fade-in">Новый релиз</h2>
+    <div class="album-block fade-in">
+      <div class="album-cover">Обложка альбома (загрузите изображение)</div>
+      <div class="album-title">[Название альбома]</div>
+      <div class="album-year">2024</div>
+      <div class="embed-placeholder">Вставьте сюда iframe Spotify / Яндекс.Музыки / Apple Music</div>
+      <div class="stream-links">
+        <a href="#" class="btn">Все платформы</a>
+        <a href="#" class="btn">Текст и лирика</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="container">
+    <h2 class="fade-in">Архив</h2>
+    <div class="gallery-grid">
+      <!-- Замените src на реальные пути к фото -->
+      <div class="gallery-item fade-in"><img src="photo1.jpg" alt="Съёмка 1"></div>
+      <div class="gallery-item fade-in"><img src="photo2.jpg" alt="Съёмка 2"></div>
+      <div class="gallery-item fade-in"><img src="photo3.jpg" alt="Съёмка 3"></div>
+      <div class="gallery-item fade-in"><img src="photo4.jpg" alt="Съёмка 4"></div>
+    </div>
+  </section>
+
+  <footer id="contact" class="container">
+    <div class="socials">
+      <a href="#">Telegram</a>
+      <a href="#">VK</a>
+      <a href="#">YouTube</a>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
+    <p>&copy; 2026 числа / Павел Аксенов. Все права защищены.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.6;">Для букинга и сотрудничества: povelaks@gmail.com</p>
+  </footer>
+
+  <script>
+    // Плавное появление элементов при скролле
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
